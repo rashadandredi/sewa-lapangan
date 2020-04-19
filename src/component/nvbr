@@ -1,0 +1,113 @@
+Logout = () => {
+    localStorage.removeItem("Token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("user");
+    window.location = "/login";
+  }
+
+  navGuest = () => {
+    return(
+      <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav">
+        <li className="nav-item">
+        <Link to="/product" className="nav-item nav-link text-light mr-4">Product</Link>
+        </li>
+        <li>
+        <Link to="/login" className="nav-item nav-link text-light mr-4">Login</Link>
+        </li>
+      </ul>
+      </div>
+    )
+  }
+
+navAdmin = () => {
+  return(
+    <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <Link to="/products" className="nav-item nav-link text-light mr-3">Produk</Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/user" className="nav-item nav-link text-light mr-3">Pengguna</Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/profil" className="nav-item nav-link text-light mr-3">Profil</Link>
+      </li>
+      <li className="nav-item">
+        <a className="nav-item nav-link text-light mr-4" onClick={this.logout}>Logout</a>
+      </li>
+    </ul>
+    </div>
+  )
+}
+
+navUser = () => {
+  return(
+    <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <Link to="/product" className="nav-item nav-link text-light mr-3">Produk</Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/profil" className="nav-item nav-link text-light mr-3">Profil</Link>
+      </li>
+      <li className="nav-item">
+        <a className="nav-item nav-link text-light mr-4" onClick={this.logout}>Logout</a>
+      </li>
+    </ul>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div className="navbar navbar-expand-lg bg-primary
+ navbar-dark">
+    <button type="button" className="navbar-toggler navbar-toggler-right"
+    data-toggle="collapse" data-target="#menu">
+    <span className="navbar navbar-toggler-icon"></span>
+    </button>
+  <div className="navbar-collapse collapse" id="menu">
+      <ul className="navbar-nav">
+          {/* list menu */}
+          <li className="navbar-item">
+            <Link className="nav-link" to="/products">Admin</Link>
+          </li>
+          <li className="Navbar-item">
+            <Link className="nav-link" to="/product">Client</Link>
+          </li>
+          <li className="navbar-item">
+            <Link className="nav-link" to="/user">Data User</Link>
+          </li>
+          <li className="navbar-item">
+            <Link className="nav-link" to="/profil">Profil</Link>
+          </li>
+      </ul>
+          <ul className="navbar-nav ml-auto">
+          <li className="navbar-item">
+            <Link className="nav-link" to="/login">Sign In</Link>
+          </li>
+          <li className="Navbar-item">
+            <Link className="nav-link" to="/register">Sign Up</Link>
+          </li>
+          <li className="navbar-item">
+            <a className="nav-link" onClick={this.Logout}><span className="fa fa-sign-out"></span>Logout</a>
+          </li>
+          </ul>
+          </div>
+          </div>
+);
+}
