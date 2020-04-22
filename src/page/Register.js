@@ -8,13 +8,13 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      user: [],
+      users: [],
       id: "",
       username: "",
       email: "",
-      password: "",
+      pssword: "",
       repassword: "",
-      role: "user",
+      role: "member",
       action: "insert",
       find: "",
       message: ""
@@ -30,9 +30,11 @@ class Register extends Component {
       // menampilkan proses loading
       // $("#loading").toast("show");
       // menutup form modal
+      $("#modal_user").modal("hide");
+
       if (this.state.password === this.state.repassword)
       {
-      let url = "http://localhost/lapangan/public/register";
+      let url = "http://localhost/lapangan/public/users/save";
       let form = new FormData();
       form.append("action", this.state.action);
       form.append("id", this.state.id);
@@ -41,28 +43,28 @@ class Register extends Component {
       form.append("password", this.state.password);
       form.append("role", this.state.role);
       axios.post(url, form)
-
       .then(response => {
         // $("#loading").toast("hide");
-        this.setState({message: response.data.message})
-        // this.get_user()
+        this.setState({message: response.data.message});
+        $("#message").toast("show");
+        window.location="/Login"
       })
       .catch(error => {
         console.log(error);
       });
-      window.location="/Login";
-    }
-    else {
-      // window.location = "/Register";
+    }else{
+      this.setState({message: "Password Tidak Cocok"});
     }
 }
+
+
 
     render(){
       return(
         <div className="background">
         <div className="container">
         <div className="col-md-6 mt-5 mx-auto">
-            <h5 className="h3 mb-3 font-weight-normal">Registrasi Nyewo Lapangan</h5>
+            <h5 className="h3 mb-3 font-weight-normal">Registrasi Disini</h5>
             <form onSubmit={this.Save}>
             <div className="form-group">
                 <label htmlFor="username">Name</label>
@@ -108,5 +110,8 @@ class Register extends Component {
         </div>
       );
     }
+
+
+
 }
 export default Register;
